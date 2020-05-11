@@ -2,7 +2,7 @@
 // TODO: Write code to define and export the Employee class
 
 const Employee = require("./Employee");
-const inquirer = require("inquirer");
+
 // const app = require("../app")
 
 class Engineer extends Employee {
@@ -11,7 +11,7 @@ class Engineer extends Employee {
         this.github = github;       
     };
 
-    getGitHub(){
+    getGithub(){
         return this.github;
     };
 
