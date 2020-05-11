@@ -10,6 +10,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const engineerArr = [];
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -17,29 +19,51 @@ const render = require("./lib/htmlRenderer");
 inquirer.prompt([
     {
         type: "list",
-        message: "Welcome!!  This app will take your input and create a nice webpage that displays your team.\n  Please select one of the choices below to begin",
-        name: "license",
+        message: "**** Welcome!! ****\nThis app will take your input and create a nice webpage that displays your team.\n  Please select one of the choices below to begin",
+        name: "choice",
         choices: [
           "Add Manager",
           "Add Engineer",
-          "Add Intern",
-          "Create Web Page"
+          "Add Intern"
          ]
       },
 
 ]).then(function(data){
-    console.log(data);
-    switch(data){
-        case "Add Engineer": addEngineer(); 
-        break;
-
-        case "Add Manager": addManager(); 
-        break;
-
-        case "Add Intern": addIntern(); 
-        break;
-        }
+    //console.log(data);
+    userChoice(data);
 });
+
+//switch user response
+
+const userChoice = function(data){
+    switch(data.choice){
+        case "Add Engineer": 
+        //console.log("Engineer");
+        choiceEngineer(data); 
+        break;
+
+        case "Add Manager": 
+        addManager(); 
+        break;
+
+        case "Add Intern": 
+        addIntern(); 
+        break;
+    }
+
+}
+
+//create different employee objects and push them to the approprite array
+
+const choiceEngineer = function(data){
+    const engineer = new Engineer;
+    engineer.addEngineer(data);
+    engineerArr.push(data);
+}
+
+
+
+
 
 
 // After the user has input all employees desired, call the `render` function (required
