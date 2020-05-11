@@ -10,9 +10,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-const engineerArr = [];
-const managerArr = [];
-const internArr = [];
+const employeeArr = [];
+
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -35,7 +34,7 @@ inquirer.prompt([
     userChoice(data);
 });
 
-//switch user response
+//switch user when first opening the app
 
 const userChoice = function(data){
     switch(data.choice){
@@ -51,6 +50,11 @@ const userChoice = function(data){
         case "Add Intern": 
         choiceIntern(); 
         break;
+
+        case "Generate Web Page":
+        choiceBuildWebPage();
+        break;
+
     }
 }
 
@@ -82,7 +86,8 @@ const choiceManager = function(){
     ]).then(function(data){
         console.log("Manager Added!");
         const newManager = new Manager(data.name, data.id, data.email);
-        managerArr.push(newManager);    
+        employeeArr.push(newManager);
+        addMoreEmployees();    
     })
 }
 
@@ -112,7 +117,8 @@ const choiceEngineer = function(){
     ]).then(function(data){
         console.log("Engineer Added!");
         const newEngineer = new Engineer(data.name, data.id, data.email, data.github);    
-        engineerArr.push(newEngineer);
+        employeeArr.push(newEngineer);
+        addMoreEmployees();
     })
 }
 
@@ -142,33 +148,56 @@ const choiceIntern = function (){
     ]).then(function(data){
         console.log("Intern Added!");
         const newIntern = new Intern(data.name, data.id, data.email, data.school);
-        internArr.push(newIntern);
+        employeeArr.push(newIntern);
+        addMoreEmployees();
         
     });
 }
 
 
-
-
-
-
-
-
-
-
-
-
+//switch for additional employees OR render HTML
+const addMoreEmployees = function(){
+    inquirer.prompt([
+        {
+            type: "list",
+            message: "Would you like to add another Employee?  Or are you ready to generate your webpage?",
+            name: "choice",
+            choices: [
+              "Add Manager",
+              "Add Engineer",
+              "Add Intern",
+              "Generate Web Page"
+             ]
+          },
+    
+    ]).then(function(data){
+        //console.log(data);
+        userChoice(data);
+    });
+}
 
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
+const choiceBuildWebPage = function(){
+    // console.log(render(employeeArr));
+    let html = render(employeeArr);
+    fs.writeFile(outputPath, html, function(err){
+        if (err){
+            return console.log(err)
+        }
+        console.log("Success writing team.html")
+    })
+}
+
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
+
 
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
