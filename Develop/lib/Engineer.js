@@ -19,35 +19,35 @@ class Engineer extends Employee {
         return "Engineer";
     };
 
-    addEngineer(){
-        inquirer.prompt([
-            {
-                type: "input",
-                name: "name",
-                message: "Please enter a name for the Engineer"
-            },
-            {
-                type: "input",
-                name: "id",
-                message: "Please enter an Emplyee ID"
-            },
-            {
-                type: "input",
-                name: "email",
-                message: "Please enter an email for the Engineer"
-            },
-            {
-                type: "input",
-                name: "github",
-                message: "Please enter the github user name for the Engineer"
-            }
+    // addEngineer(){
+    //     inquirer.prompt([
+    //         {
+    //             type: "input",
+    //             name: "name",
+    //             message: "Please enter a name for the Engineer"
+    //         },
+    //         {
+    //             type: "input",
+    //             name: "id",
+    //             message: "Please enter an Emplyee ID"
+    //         },
+    //         {
+    //             type: "input",
+    //             name: "email",
+    //             message: "Please enter an email for the Engineer"
+    //         },
+    //         {
+    //             type: "input",
+    //             name: "github",
+    //             message: "Please enter the github user name for the Engineer"
+    //         }
 
-        ]).then(function(data){
-            console.log("Engineer Added!");
-            const newEngineer = new Engineer(data.name, data.id, data.email);
+    //     ]).then(function(data){
+    //         console.log("Engineer Added!");
+    //         const newEngineer = new Engineer(data.name, data.id, data.email);
             
-        });
-    }
+    //     });
+    // }
 
 
 };

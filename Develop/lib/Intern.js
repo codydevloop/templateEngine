@@ -3,7 +3,7 @@ const Employee = require("./Employee")
 const inquirer = require("inquirer");
 
 class Intern extends Employee{
-    constructor(name, id, email,school){
+    constructor(name, id, email, school){
         super(name, id, email);
         this.school = school;
     }
@@ -16,30 +16,30 @@ class Intern extends Employee{
         return this.school;
     }
 
-    addIntern(){
-        inquirer.prompt([
-            {
-                type: "input",
-                name: "name",
-                message: "Please enter a name for the Intern"
-            },
-            {
-                type: "input",
-                name: "id",
-                message: "Please enter an Intern ID"
-            },
-            {
-                type: "input",
-                name: "github",
-                message: "Please enter the school the Intern is attending"
-            }
+    // addIntern(){
+    //     inquirer.prompt([
+    //         {
+    //             type: "input",
+    //             name: "name",
+    //             message: "Please enter a name for the Intern"
+    //         },
+    //         {
+    //             type: "input",
+    //             name: "id",
+    //             message: "Please enter an Intern ID"
+    //         },
+    //         {
+    //             type: "input",
+    //             name: "github",
+    //             message: "Please enter the school the Intern is attending"
+    //         }
 
-        ]).then(function(data){
-            console.log("Intern Added!");
-            const newIntern = new Intern(data.name, data.id, data.email);
+    //     ]).then(function(data){
+    //         console.log("Intern Added!");
+    //         const newIntern = new Intern(data.name, data.id, data.email);
             
-        });
-    }
+    //     });
+    // }
 
 
 }
