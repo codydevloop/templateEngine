@@ -11,6 +11,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 const engineerArr = [];
+const managerArr = [];
+const inter = [];
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -43,11 +45,11 @@ const userChoice = function(data){
         break;
 
         case "Add Manager": 
-        addManager(); 
+        choiceManager(data); 
         break;
 
         case "Add Intern": 
-        addIntern(); 
+        choiceIntern(); 
         break;
     }
 
@@ -55,11 +57,31 @@ const userChoice = function(data){
 
 //create different employee objects and push them to the approprite array
 
+const choiceManager = function(data){
+    const manager = new Manager;
+    manager.addManager();
+    
+}
+
 const choiceEngineer = function(data){
     const engineer = new Engineer;
     engineer.addEngineer(data);
-    engineerArr.push(data);
 }
+
+const choiceIntern = function(data){
+    const engineer = new Intern;
+    engineer.addIntern(data);
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
