@@ -12,7 +12,7 @@ const render = require("./lib/htmlRenderer");
 
 const engineerArr = [];
 const managerArr = [];
-const inter = [];
+const internArr = [];
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -96,7 +96,7 @@ const choiceEngineer = function(){
         {
             type: "input",
             name: "id",
-            message: "Please enter an Emplyee ID"
+            message: "Please enter an Employee ID"
         },
         {
             type: "input",
@@ -112,6 +112,7 @@ const choiceEngineer = function(){
     ]).then(function(data){
         console.log("Engineer Added!");
         const newEngineer = new Engineer(data.name, data.id, data.email, data.github);    
+        engineerArr.push(newEngineer);
     })
 }
 
@@ -125,7 +126,7 @@ const choiceIntern = function (){
         {
             type: "input",
             name: "id",
-            message: "Please enter an Intern ID"
+            message: "Please enter an Employee ID"
         },
         {
             type: "input",
@@ -141,6 +142,7 @@ const choiceIntern = function (){
     ]).then(function(data){
         console.log("Intern Added!");
         const newIntern = new Intern(data.name, data.id, data.email, data.school);
+        internArr.push(newIntern);
         
     });
 }
