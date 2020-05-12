@@ -26,7 +26,7 @@
    * [Questions](#questions)
 
 ## Installation
-There are 4 npm dependencies.  JEST, FS, PATH, INQUIRER
+There are 4 npm dependencies.  JEST, PATH, INQUIRER
 ## Usage
 From the command line:  node app.js
 ## License
